@@ -1,0 +1,8 @@
+# Local tooling and notes — deliberately kept out of the public repo.
+# These files stay in your working folder; they just aren't published.
+
+README.md
+LAUNCH.md
+publish.sh
+
+.DS_Store
