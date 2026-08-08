@@ -337,6 +337,9 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 44px 0; }
 .prose li { margin-bottom: 10px; }
 .meta { font-size: 14.5px; color: var(--ink-faint); margin-bottom: 34px; }
 
+/* Anchor jumps clear the sticky header instead of landing under it. */
+[id] { scroll-margin-top: 88px; }
+
 table { border-collapse: collapse; width: 100%; max-width: var(--measure); margin: 20px 0 28px; font-size: 15px; }
 th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink-soft); }
 th { color: var(--ink); font-weight: 700; }
