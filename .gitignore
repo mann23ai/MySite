@@ -5,4 +5,9 @@ README.md
 LAUNCH.md
 publish.sh
 
+# Transfer archives dropped into this folder — never publish these.
+*.zip
+_to_delete/
+
 .DS_Store
+_to_delete*
