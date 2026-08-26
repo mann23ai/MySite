@@ -431,3 +431,87 @@ footer.site .legal { border-top: 1px solid rgba(28,58,60,.12); padding-top: 24px
 
 .shot-wrap { display: flex; justify-content: center; margin-top: 40px; }
 .shot-wrap .shot { max-width: 300px; width: 100%; }
+
+/* =================================================================
+   Homepage v2 — app showcase
+   ================================================================= */
+
+nav.site a.nav-cta {
+  padding: 8px 16px; border-radius: 999px; background: var(--pastel);
+  color: var(--ink); font-weight: 700; font-size: 14.5px;
+}
+nav.site a.nav-cta:hover { color: var(--ink); box-shadow: var(--shadow-sm); }
+
+.app-stack { display: grid; gap: 26px; margin-top: 48px; }
+
+/* the flagship card: copy on the left, a fanned set of screens on the right */
+.app-card.featured {
+  display: grid; grid-template-columns: 1.16fr 1fr; gap: 44px;
+  align-items: center; padding: 40px 40px 36px;
+}
+.app-card.featured:hover { transform: none; box-shadow: var(--shadow-sm); }
+.app-card.wide:hover { transform: none; box-shadow: var(--shadow-sm); }
+.app-card .app-body { display: flex; flex-direction: column; min-width: 0; }
+
+.app-head { display: flex; align-items: center; gap: 18px; margin-bottom: 16px; }
+.app-head .icon { margin-bottom: 0; }
+.app-head h2 { margin: 0 0 3px; font-size: 30px; }
+.app-icon {
+  width: 72px; height: 72px; border-radius: 21px; flex: 0 0 auto; display: block;
+  box-shadow: var(--shadow-sm); border: 1px solid var(--rule);
+}
+.app-tagline { margin: 0; font-size: 15.5px; font-weight: 640; color: var(--ink-faint); flex: none; }
+
+.status.live { background: var(--pastel-soft); color: var(--accent-deep); }
+.status .tick-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: 0 0 auto;
+}
+
+.app-card .tick { margin-top: 4px; }
+.app-card .tick li { font-size: 15px; margin-bottom: 13px; }
+.app-card .tick strong { font-weight: 720; color: var(--ink); }
+
+.store-meta {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 18px 20px; margin: 26px 0 0; padding-top: 22px; border-top: 1px solid var(--rule);
+}
+.store-meta div { min-width: 0; }
+.store-meta dt {
+  font-size: 11.5px; text-transform: uppercase; letter-spacing: .085em;
+  color: var(--ink-faint); font-weight: 730; margin-bottom: 4px;
+}
+.store-meta dd { margin: 0; font-size: 14.5px; font-weight: 650; color: var(--ink); }
+
+.nutrition {
+  background: var(--tint); border-radius: var(--radius); padding: 16px 20px;
+  font-size: 14.5px; margin-top: 24px; max-width: none;
+}
+.nutrition strong { color: var(--ink); font-weight: 730; }
+
+.btn-store { background: #14181a; color: #fff; }
+.btn-store:hover { background: #000; }
+.btn-store svg { width: 21px; height: 21px; flex: 0 0 auto; }
+
+/* fanned screens */
+.phones { display: flex; gap: 12px; align-items: center; justify-content: center; }
+.phones .device { max-width: 158px; padding: 6px; border-radius: 27px; flex: 1 1 0; }
+.phones .device .screen { border-radius: 22px; }
+.phones .device::before, .phones .device::after { display: none; }
+.phones .device:nth-child(1) { transform: translateY(16px); }
+.phones .device:nth-child(3) { transform: translateY(16px); }
+
+@media (max-width: 980px) {
+  .app-card.featured { grid-template-columns: 1fr; gap: 34px; padding: 34px 30px 30px; }
+  .phones { justify-content: flex-start; overflow-x: auto; padding-bottom: 8px;
+            margin: 0 -30px; padding-left: 30px; padding-right: 30px; }
+  .phones .device { flex: 0 0 auto; max-width: none; width: 186px; }
+  .phones .device:nth-child(n) { transform: none; }
+}
+@media (max-width: 560px) {
+  .app-head h2 { font-size: 25px; }
+  .app-icon { width: 60px; height: 60px; border-radius: 18px; }
+}
+
+/* The nav CTA pushes the sticky header to three rows on a phone; the hero's
+   own Download button sits just below it, so drop it at small widths. */
+@media (max-width: 700px) { nav.site a.nav-cta { display: none; } }
