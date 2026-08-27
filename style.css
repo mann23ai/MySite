@@ -1254,3 +1254,117 @@ main > section:last-of-type .btn-primary:hover { background: #fff; color: var(--
   .app-visual { width: 240px; margin: 0 auto; }
 }
 @media (max-width: 560px) { .gallery img { width: 208px; } }
+
+/* =================================================================
+   Guides — cited explainers that answer what parents search for
+   ================================================================= */
+
+.guide-hero { padding: 78px 0 66px; }
+.guide-hero h1 { font-size: clamp(34px, 4.6vw, 58px); max-width: 20ch; }
+.guide-hero .lede { color: var(--on-deep-soft); max-width: 56ch; }
+.guide-meta {
+  display: flex; gap: 20px; flex-wrap: wrap; margin-top: 26px;
+  font-family: inherit; font-size: 13px; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--on-deep-faint);
+}
+.guide-meta span { display: inline-flex; align-items: center; gap: 8px; }
+.guide-meta span + span::before {
+  content: ""; width: 4px; height: 4px; border-radius: 50%;
+  background: currentColor; opacity: .55;
+}
+
+.prose-guide { font-size: 17.5px; line-height: 1.7; }
+.prose-guide h2 { font-size: clamp(25px, 2.8vw, 34px); margin: 46px 0 14px; }
+.prose-guide h3 { font-size: 19px; margin: 32px 0 8px; }
+.prose-guide p { max-width: 66ch; }
+.prose-guide ul { max-width: 66ch; padding-left: 22px; margin: 0 0 18px; }
+.prose-guide li { margin-bottom: 9px; }
+.prose-guide > *:first-child { margin-top: 0; }
+
+.keyfacts {
+  border: 1px solid var(--rule); border-radius: 20px; background: var(--card);
+  padding: 26px 28px; margin: 32px 0; box-shadow: var(--shadow-sm);
+}
+.keyfacts h4 {
+  font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent-deep); margin: 0 0 16px;
+}
+.keyfacts dl { margin: 0; display: grid; gap: 0; }
+.keyfacts dl > div {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 20px; padding: 11px 0; border-top: 1px solid var(--rule);
+}
+.keyfacts dl > div:first-child { border-top: 0; padding-top: 0; }
+.keyfacts dt { font-weight: 600; color: var(--ink); font-size: 15.5px; }
+.keyfacts dd {
+  margin: 0; text-align: right; color: var(--ink-2, var(--ink-soft));
+  font-size: 15.5px; font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+
+.caveat {
+  border-left: 4px solid var(--amber); background: var(--card);
+  border-radius: 0 16px 16px 0; padding: 20px 24px; margin: 32px 0;
+  border-top: 1px solid var(--rule); border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.caveat p { margin: 0; font-size: 16px; }
+.caveat p + p { margin-top: 10px; }
+
+.sources { margin-top: 56px; padding-top: 30px; border-top: 2px solid var(--rule); }
+.sources h2 { font-size: 21px; margin: 0 0 6px; }
+.sources p.note-line { font-size: 14.5px; color: var(--ink-faint); margin-bottom: 18px; }
+.sources ol { padding-left: 20px; margin: 0; font-size: 15px; }
+.sources li { margin-bottom: 12px; line-height: 1.55; }
+.sources cite { font-style: normal; font-weight: 600; color: var(--ink); }
+
+.guide-cta {
+  margin-top: 52px; border-radius: 28px; padding: 38px 40px;
+  background:
+    radial-gradient(110% 90% at 88% 6%, rgba(41,86,150,.5) 0%, rgba(41,86,150,0) 60%),
+    linear-gradient(156deg, #0b1526 0%, #132340 58%, #1d3358 100%);
+  color: var(--on-deep);
+  display: grid; grid-template-columns: 62px 1fr; gap: 22px; align-items: start;
+}
+.guide-cta img { width: 62px; height: 62px; border-radius: 18px; }
+.guide-cta h3 { color: #fff; font-size: 22px; margin: 0 0 8px; }
+.guide-cta p { color: var(--on-deep-soft); font-size: 15.5px; margin: 0 0 18px; max-width: 54ch; }
+.guide-cta .btn-store { background: #fff; color: var(--ink); padding: 12px 22px; font-size: 15px; }
+@media (max-width: 560px) { .guide-cta { grid-template-columns: 1fr; padding: 28px 24px; } }
+
+/* index of guides */
+.guide-list { display: grid; gap: 18px; margin-top: 48px; }
+.guide-card {
+  display: block; text-decoration: none; color: inherit;
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: 22px; padding: 30px 32px;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.guide-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--pastel); }
+.guide-card h2 { font-size: clamp(22px, 2.2vw, 28px); margin: 0 0 8px; }
+.guide-card p { font-size: 15.5px; margin: 0; max-width: 62ch; }
+.guide-card .tagline {
+  display: block; font-size: 11.5px; font-weight: 800; letter-spacing: .13em;
+  text-transform: uppercase; color: var(--accent-deep); margin-bottom: 12px;
+}
+
+/* A guide page has only two sections, so the navy closing-CTA rule was
+   catching the article body and rendering dark text on a dark ground.
+   Guide bodies opt out and stay on paper. */
+main > section.guide-body,
+main > section.guide-body:last-of-type,
+main > section:nth-of-type(odd).guide-body,
+main > section:nth-of-type(even).guide-body {
+  background: var(--card);
+  color: var(--ink);
+}
+main > section.guide-body h2,
+main > section.guide-body h3 { color: var(--ink); }
+main > section.guide-body p,
+main > section.guide-body li { color: var(--ink-soft); }
+main > section.guide-body .sources li,
+main > section.guide-body .sources p { color: var(--ink-soft); }
+main > section.guide-body .sources cite { color: var(--ink); }
+main > section.guide-body .sources a { color: var(--accent); }
+/* the funnel card inside a guide keeps its own dark treatment */
+main > section.guide-body .guide-cta h3 { color: #fff; }
+main > section.guide-body .guide-cta p { color: var(--on-deep-soft); }
