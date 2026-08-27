@@ -1139,3 +1139,118 @@ footer.site .brandmark .dot {
 @media (max-width: 700px) {
   .app-card, .app-card.live, .app-card.soon { grid-template-columns: 1fr; }
 }
+
+/* =================================================================
+   FULL PASTEL SWEEP
+   Rather than chase forty individual declarations, the source tokens
+   are retuned to the navy/steel family — every rule that referenced
+   them follows automatically. The per-page body.bam / body.nn
+   overrides are neutralised too: those were the real reason the
+   BabyChart page rendered peach buttons while the homepage rendered
+   mint ones.
+   ================================================================= */
+
+:root {
+  --mint:   #eef1f6;
+  --sky:    #e8edf6;
+  --peach:  #f1eff3;
+  --butter: #f2f1ec;
+  --blush:  #eeeef4;
+
+  --accent:      #2a4a7d;
+  --accent-deep: #1c3055;
+  --pastel:      #9fbbe0;
+  --pastel-soft: #e4ebf6;
+  --tint:        #eef2f9;
+}
+body.bam, body.nn {
+  --accent:      #2a4a7d;
+  --accent-deep: #1c3055;
+  --pastel:      #9fbbe0;
+  --pastel-soft: #e4ebf6;
+  --tint:        #eef2f9;
+}
+
+/* the handful that were hardcoded rather than tokenised */
+nav.site .soon { background: var(--pastel-soft); color: var(--accent-deep); }
+.app-card.bam .icon,
+.app-card.nn .icon { background: linear-gradient(150deg, #e4ebf6, #b9cde9); color: #1c3055; }
+.principles div:nth-child(4) { border-left-color: #9fbbe0; }
+.sig .av { background: linear-gradient(145deg, #4d7ab8, #22345a); color: #fff; }
+.not .x { background: #e7ebf3; color: #3d5480; }
+
+/* one tint for the icon tiles instead of four rotating pastels */
+.pillar .ic,
+.pillar:nth-child(4n+2) .ic,
+.pillar:nth-child(4n+3) .ic,
+.pillar:nth-child(4n+4) .ic { background: var(--pastel-soft); color: var(--accent-deep); }
+.stack > div .n,
+.stack > div:nth-child(4n+2) .n,
+.stack > div:nth-child(4n+3) .n,
+.stack > div:nth-child(4n+4) .n { background: var(--pastel-soft); color: var(--accent-deep); }
+
+/* the primary button was peach on one page and mint on another */
+.btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-primary:hover { background: var(--accent-deep); color: #fff; }
+.hero .btn-primary,
+main > section:last-of-type .btn-primary { background: #fff; color: var(--ink); border-color: #fff; }
+.hero .btn-primary:hover,
+main > section:last-of-type .btn-primary:hover { background: #fff; color: var(--accent); }
+
+/* =================================================================
+   Swipeable screenshot gallery, with the controls Tyche pairs it with
+   ================================================================= */
+.shots { position: relative; margin-top: 44px; }
+.gallery {
+  display: flex; gap: 20px; overflow-x: auto; padding: 4px 4px 18px;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.gallery::-webkit-scrollbar { display: none; }
+.gallery img {
+  flex: 0 0 auto; width: 262px; height: auto; scroll-snap-align: center;
+  border-radius: 22px; border: 1px solid var(--rule);
+  box-shadow: var(--shadow-sm); background: #f6f2e7;
+}
+.gallery-controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-top: 22px; flex-wrap: wrap;
+}
+.gallery-btn {
+  appearance: none; cursor: pointer; font: inherit;
+  min-width: 46px; height: 46px; padding: 0 16px; border-radius: 999px;
+  border: 1px solid var(--rule); background: var(--card); color: var(--ink);
+  font-size: 17px; font-weight: 700; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
+}
+.gallery-btn:hover { background: var(--pastel-soft); border-color: var(--pastel); }
+.gallery-btn:active { transform: translateY(1px); }
+.gallery-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.gallery-btn.wide { font-size: 14px; font-weight: 700; letter-spacing: .01em; }
+.gallery-count {
+  font-size: 13.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-faint); min-width: 76px; text-align: center;
+}
+@media (max-width: 560px) { .gallery img { width: 208px; } }
+
+/* ---- video and screenshots at exactly the same scale -------------
+   The promo was rendering at 426x920 while a gallery screenshot was
+   262x567 — over three times the area for the same 2.17 aspect. Both
+   visuals are now pinned to one width, so the video reads as a peer
+   of the screenshots rather than the main event. */
+#apps .wrap { max-width: 1320px; }
+.app-card, .app-card.live, .app-card.soon { grid-template-columns: minmax(0, 1fr) 240px; }
+.app-visual { width: 240px; }
+.gallery img { width: 240px; }
+
+@media (max-width: 1180px) {
+  #apps .wrap { max-width: 1120px; }
+  .app-grid { grid-template-columns: 1fr; }
+  .app-card, .app-card.live, .app-card.soon { grid-template-columns: minmax(0, 1fr) 240px; }
+}
+@media (max-width: 700px) {
+  .app-card, .app-card.live, .app-card.soon { grid-template-columns: 1fr; }
+  .app-visual { width: 240px; margin: 0 auto; }
+}
+@media (max-width: 560px) { .gallery img { width: 208px; } }

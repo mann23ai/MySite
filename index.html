@@ -213,9 +213,10 @@
       <div class="center">
         <span class="eyebrow">A look inside</span>
         <h2>BabyChart, screen by screen</h2>
-        <p class="lede">Seven screens, straight from the app.</p>
+        <p class="lede">Seven screens, straight from the app. Swipe, or use the controls below.</p>
       </div>
-      <div class="gallery">
+      <div class="shots">
+        <div class="gallery" id="shots" tabindex="0" role="group" aria-label="BabyChart screenshots">
         <img src="assets/slide-home.jpg" alt="The BabyChart home screen — time since the last feed, diaper and sleep, over a six-button quick-log grid" loading="lazy" width="560" height="1217">
         <img src="assets/slide-sleep.jpg" alt="The Sleep tab — a wake-window prediction built from your own logs, and seven days of sleep on one chart" loading="lazy" width="560" height="1217">
         <img src="assets/slide-trends.jpg" alt="The Baby tab — sleep across the last 24 hours, and week-long trend bars for sleep, feeds and diapers" loading="lazy" width="560" height="1217">
@@ -223,6 +224,13 @@
         <img src="assets/slide-milestones.jpg" alt="Milestones — the CDC six-month checklist alongside a card explaining fussy phases and what often helps" loading="lazy" width="560" height="1217">
         <img src="assets/slide-daysummary.jpg" alt="Day summary — yesterday's feeds, sleep sessions, diapers and pumping totalled on one screen" loading="lazy" width="560" height="1217">
         <img src="assets/slide-mom.jpg" alt="The Mom tab — postpartum recovery guides by topic, and support numbers that are always reachable" loading="lazy" width="560" height="1217">
+        </div>
+        <div class="gallery-controls">
+          <button class="gallery-btn" type="button" id="shots-prev" aria-label="Previous screenshot" aria-controls="shots">&#8592;</button>
+          <span class="gallery-count" id="shots-count" aria-live="polite">1 / 7</span>
+          <button class="gallery-btn" type="button" id="shots-next" aria-label="Next screenshot" aria-controls="shots">&#8594;</button>
+          <button class="gallery-btn wide" type="button" id="shots-toggle" aria-pressed="false">Pause auto-scroll</button>
+        </div>
       </div>
     </div>
   </section>
@@ -407,6 +415,71 @@
   v.addEventListener('play',  function () { fig.classList.add('playing'); });
   v.addEventListener('pause', function () { fig.classList.remove('playing'); });
   v.addEventListener('ended', function () { fig.classList.remove('playing'); });
+})();
+</script>
+
+<script>
+(function () {
+  var track = document.getElementById('shots');
+  if (!track) return;
+  var prev = document.getElementById('shots-prev'),
+      next = document.getElementById('shots-next'),
+      toggle = document.getElementById('shots-toggle'),
+      count = document.getElementById('shots-count');
+  var slides = Array.prototype.slice.call(track.children);
+  if (!slides.length) return;
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timer = null, playing = false;
+
+  function step() { return slides[0].getBoundingClientRect().width + 20; }
+  function index() { return Math.round(track.scrollLeft / step()); }
+  function render() {
+    var i = Math.min(slides.length - 1, Math.max(0, index()));
+    count.textContent = (i + 1) + ' / ' + slides.length;
+  }
+  function go(dir) {
+    var i = index() + dir;
+    if (i < 0) i = slides.length - 1;
+    if (i > slides.length - 1) i = 0;
+    track.scrollTo({ left: i * step(), behavior: 'smooth' });
+  }
+  function play() {
+    if (reduced || playing) return;
+    playing = true;
+    toggle.textContent = 'Pause auto-scroll';
+    toggle.setAttribute('aria-pressed', 'false');
+    timer = setInterval(function () { go(1); }, 4200);
+  }
+  function pause() {
+    playing = false;
+    toggle.textContent = 'Play auto-scroll';
+    toggle.setAttribute('aria-pressed', 'true');
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  prev.addEventListener('click', function () { pause(); go(-1); });
+  next.addEventListener('click', function () { pause(); go(1); });
+  toggle.addEventListener('click', function () { playing ? pause() : play(); });
+
+  track.addEventListener('scroll', render, { passive: true });
+  track.addEventListener('pointerdown', pause);
+  track.addEventListener('mouseenter', pause);
+  track.addEventListener('focusin', pause);
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { pause(); go(1); e.preventDefault(); }
+    if (e.key === 'ArrowLeft')  { pause(); go(-1); e.preventDefault(); }
+  });
+
+  // only auto-scroll while the gallery is actually on screen
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries[0].isIntersecting ? play() : pause();
+    }, { threshold: 0.35 }).observe(track);
+  } else { play(); }
+
+  if (reduced) { toggle.hidden = true; }
+  render();
 })();
 </script>
 </body>
