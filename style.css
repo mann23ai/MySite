@@ -949,3 +949,193 @@ main.prose { background: var(--card); }
 /* keep the label clear of the browser's own control bar */
 .promo .play em { bottom: 72px; }
 @media (max-width: 560px) { .promo .play em { bottom: 58px; } }
+
+/* =================================================================
+   Apps as a two-up grid, the way Tyche organises them
+   ================================================================= */
+
+.app-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 22px; margin-top: 56px;
+}
+.app-card, .app-card.live, .app-card.soon {
+  display: grid; grid-template-columns: 1.12fr .88fr;
+  gap: 24px; align-items: start;
+  padding: 42px; border-radius: 34px; border: 0;
+  box-shadow: var(--shadow-md);
+  transform: none;
+}
+.app-card:hover { transform: none; box-shadow: var(--shadow-md); }
+.app-card.live {
+  background:
+    radial-gradient(110% 90% at 88% 6%, rgba(41,86,150,.5) 0%, rgba(41,86,150,0) 60%),
+    linear-gradient(156deg, #0b1526 0%, #132340 58%, #1d3358 100%);
+  color: var(--on-deep);
+}
+.app-card.soon { background: linear-gradient(158deg, #fdf2e9 0%, #f8e3d2 100%); }
+
+.app-copy { min-width: 0; }
+
+.app-lockup { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
+.app-lockup img, .app-lockup .icon {
+  width: 62px; height: 62px; border-radius: 18px; flex: 0 0 auto;
+  display: grid; place-items: center;
+}
+.app-lockup img { box-shadow: 0 10px 30px rgba(0,0,0,.32); }
+.app-card.soon .app-lockup .icon { background: rgba(255,255,255,.75); color: #8a4a2c; }
+.app-lockup .icon svg { width: 30px; height: 30px; }
+
+.app-status {
+  font-size: 10.5px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; line-height: 1.35; max-width: 15ch;
+}
+.app-card.live .app-status { color: #a9c8f0; }
+.app-card.soon .app-status { color: #a8683f; }
+
+.app-card h3 {
+  font-size: clamp(30px, 3.1vw, 44px); line-height: .98;
+  letter-spacing: -.038em; font-weight: 800; margin: 0 0 8px;
+}
+.app-card.live h3 { color: #fff; }
+.app-card.soon h3 { color: #43241a; }
+
+.app-tagline { font-size: 16.5px; font-weight: 700; margin: 0 0 14px; max-width: none; }
+.app-card.live .app-tagline { color: #c3d6f0; }
+.app-card.soon .app-tagline { color: #97705e; }
+
+.app-desc { font-size: 15px; line-height: 1.6; margin: 0 0 22px; max-width: none; }
+.app-card.live .app-desc { color: var(--on-deep-soft); }
+.app-card.soon .app-desc { color: #6d4a3c; }
+
+.app-card .store-meta {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 16px;
+  margin: 0 0 24px; padding-top: 20px; border-top: 1px solid;
+}
+.app-card.live .store-meta { border-top-color: rgba(255,255,255,.14); }
+.app-card.soon .store-meta { border-top-color: rgba(138,74,44,.18); }
+.app-card .store-meta dt {
+  font-size: 10.5px; font-weight: 800; letter-spacing: .11em;
+  text-transform: uppercase; margin-bottom: 3px;
+}
+.app-card .store-meta dd { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.35; }
+.app-card.live .store-meta dt { color: var(--on-deep-faint); }
+.app-card.live .store-meta dd { color: #fff; }
+.app-card.soon .store-meta dt { color: #a8836f; }
+.app-card.soon .store-meta dd { color: #43241a; }
+
+.app-actions { margin-bottom: 18px; }
+.app-actions .btn { padding: 13px 24px; font-size: 15.5px; }
+.app-card.live .btn-store { background: #fff; color: var(--ink); }
+.app-card.soon .btn-ghost { background: rgba(255,255,255,.8); border-color: rgba(138,74,44,.22); color: #8a4a2c; }
+
+.app-card .app-links { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14.5px; font-weight: 600; }
+.app-card.live .app-links a { color: #a9c8f0; }
+.app-card.soon .app-links a { color: #8a4a2c; }
+
+.app-visual { min-width: 0; }
+.app-visual .promo { margin: 0; }
+.app-visual .promo figcaption { font-size: 13px; margin-top: 11px; }
+.app-shot {
+  display: block; width: 100%; height: auto; border-radius: 22px;
+  border: 1px solid rgba(138,74,44,.16); box-shadow: var(--shadow-md);
+}
+/* the play badge scales with the smaller tile */
+.app-visual .promo .play i { width: 58px; height: 58px; }
+.app-visual .promo .play i::after { border-left-width: 17px; border-top-width: 10px; border-bottom-width: 10px; }
+.app-visual .promo .play em { font-size: 11px; bottom: 52px; letter-spacing: .09em; }
+
+@media (max-width: 1040px) {
+  .app-grid { grid-template-columns: 1fr; }
+  .app-card, .app-card.live, .app-card.soon { grid-template-columns: 1.1fr .9fr; }
+}
+@media (max-width: 700px) {
+  .app-card, .app-card.live, .app-card.soon {
+    grid-template-columns: 1fr; padding: 30px 24px; border-radius: 26px;
+  }
+  .app-visual { max-width: 320px; margin: 0 auto; }
+  .app-card .store-meta { grid-template-columns: 1fr 1fr; }
+}
+
+/* =================================================================
+   All seven screenshots visible — the horizontal scroller hid three
+   of them behind an invisible macOS scrollbar.
+   ================================================================= */
+.gallery {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px; margin-top: 44px;
+  overflow: visible; padding: 0;
+}
+.gallery img {
+  width: 100%; height: auto; flex: none;
+  border-radius: 20px; border: 1px solid var(--rule);
+  box-shadow: var(--shadow-sm); background: #f6f2e7;
+}
+@media (max-width: 900px) { .gallery { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; } }
+@media (max-width: 520px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+
+/* =================================================================
+   Brand mark, and the pastel tag pills, brought into the navy system
+   ================================================================= */
+.brandmark .dot {
+  background: linear-gradient(145deg, #2a4a7d 0%, #1c3055 55%, #0d1b30 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22);
+}
+footer.site .brandmark .dot {
+  background: linear-gradient(145deg, #4d7ab8 0%, #2a4a7d 60%, #16233d 100%);
+}
+
+/* "What you can log" / "Tracked per child" tags */
+.chips span,
+.chips span:nth-child(4n+2),
+.chips span:nth-child(4n+3),
+.chips span:nth-child(4n+4) {
+  background: #eef1f6; color: #22345a;
+  border: 1px solid #dde3ed;
+}
+.chips span.muted { background: transparent; border: 1px dashed var(--rule); color: var(--ink-faint); }
+
+/* =================================================================
+   The focus shot sat alone in a full-width band, leaving a lot of
+   empty space either side. Pair it with its heading instead.
+   ================================================================= */
+.split {
+  display: grid; grid-template-columns: 1fr .78fr;
+  gap: 56px; align-items: center;
+}
+.split .slide-shot { margin: 0; width: 100%; max-width: 380px; justify-self: end; }
+.split h2 { margin-bottom: 14px; }
+@media (max-width: 860px) {
+  .split { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+  .split .slide-shot { justify-self: center; margin: 0 auto; }
+}
+
+/* ---- the two-up grid was cramping the copy column ---------------- */
+#apps .wrap { max-width: 1260px; }
+
+.app-card, .app-card.live, .app-card.soon { grid-template-columns: 1fr .62fr; gap: 28px; }
+.app-card h3 { font-size: clamp(29px, 2.7vw, 38px); text-wrap: balance; }
+.app-tagline { font-size: 15.5px; }
+
+/* spec rows read left-to-right instead of a cramped 2x2 */
+.app-card .store-meta {
+  display: block; margin: 0 0 22px; padding-top: 6px; border-top: 0;
+}
+.app-card .store-meta > div {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  padding: 9px 0; border-top: 1px solid;
+}
+.app-card.live .store-meta > div { border-top-color: rgba(255,255,255,.12); }
+.app-card.soon .store-meta > div { border-top-color: rgba(138,74,44,.15); }
+.app-card .store-meta dt { margin: 0; white-space: nowrap; }
+.app-card .store-meta dd { text-align: right; }
+
+.app-card .app-links { gap: 16px; font-size: 14px; }
+
+@media (max-width: 1100px) {
+  #apps .wrap { max-width: 1120px; }
+  .app-grid { grid-template-columns: 1fr; }
+  .app-card, .app-card.live, .app-card.soon { grid-template-columns: 1fr .5fr; }
+}
+@media (max-width: 700px) {
+  .app-card, .app-card.live, .app-card.soon { grid-template-columns: 1fr; }
+}
