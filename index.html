@@ -4,18 +4,50 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AxiomPoint — calm, private apps for parents</title>
-<meta name="description" content="AxiomPoint builds privacy-first apps for parents and caregivers. BabyChart is on the App Store — a private baby tracker that keeps every feed, nap and milestone on your own phone. No accounts, no analytics, no ads.">
+<meta name="description" content="Privacy-first apps for parents. BabyChart is on the App Store — a baby tracker that keeps every feed, nap and milestone on your own phone.">
 <link rel="canonical" href="https://axiompointlabs.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AxiomPoint">
 <meta property="og:title" content="AxiomPoint — calm, private apps for parents">
 <meta property="og:description" content="BabyChart is on the App Store. Privacy-first apps for parents — your family's data stays on your device.">
 <meta property="og:url" content="https://axiompointlabs.com/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://axiompointlabs.com/assets/og-axiompoint.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AxiomPoint — simple, private apps for parents.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://axiompointlabs.com/assets/og-axiompoint.jpg">
 <link rel="icon" href="favicon.png">
 <link rel="icon" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="assets/inter-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://axiompointlabs.com/#org",
+      "name": "AxiomPoint LLC",
+      "alternateName": "AxiomPoint",
+      "url": "https://axiompointlabs.com/",
+      "logo": "https://axiompointlabs.com/apple-touch-icon.png",
+      "description": "AxiomPoint builds privacy-first iPhone and iPad apps for parents and caregivers. Nothing you record leaves your device.",
+      "email": "support@axiompointlabs.com",
+      "founder": { "@type": "Person", "name": "Karen" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://axiompointlabs.com/#website",
+      "url": "https://axiompointlabs.com/",
+      "name": "AxiomPoint",
+      "publisher": { "@id": "https://axiompointlabs.com/#org" },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -39,12 +71,12 @@
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <span class="badge"><span class="pulse"></span> BabyChart is live on the App Store</span>
-          <h1>Simple tools to make parenting a little easier — private by design.</h1>
+          <span class="eyebrow">Independent iPhone &amp; iPad apps</span>
+          <h1>Quiet apps.<br>Calmer days.</h1>
           <p class="lede">
-            We build apps for parents and caregivers — quiet, careful with what they
-            claim, and built so the information you record about your family stays on
-            your own device.
+            AxiomPoint builds focused tools for parents and caregivers — careful with
+            what they claim, and built so everything you record about your family stays
+            on your own device.
           </p>
           <div class="btn-row">
             <a class="btn btn-primary" href="https://apps.apple.com/us/app/babychart/id6800567624">Download BabyChart</a>
@@ -52,20 +84,27 @@
           </div>
         </div>
 
-        <div class="figcard">
-          <h4>What we don't do</h4>
-          <div class="stack">
-            <div><span class="n">✕</span><div><strong>No accounts on our servers</strong><p>Because we don't run any. There is nothing of yours to sign into.</p></div></div>
-            <div><span class="n">✕</span><div><strong>No analytics or trackers</strong><p>No usage telemetry, no crash SDKs, no advertising identifiers.</p></div></div>
-            <div><span class="n">✕</span><div><strong>No advertising SDKs</strong><p>No ad networks, no ad identifiers, nothing following you between apps.</p></div></div>
-            <div><span class="n">✕</span><div><strong>No invented facts</strong><p>Health and nutrition guidance is cited to its source, never generated.</p></div></div>
-          </div>
+        <div class="applist">
+          <a class="applink" href="babychart/index.html">
+            <span class="ci"><img src="assets/babychart-icon.png" alt="" width="46" height="46"></span>
+            <span class="ct"><span class="cname">BabyChart</span><span class="csub">Feeds, diapers &amp; sleep</span></span>
+            <span class="flag">On the App&nbsp;Store</span>
+          </a>
+          <a class="applink" href="kids-nutrition/index.html">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c4.5-2.5 7-6.2 7-10a7 7 0 0 0-14 0c0 3.8 2.5 7.5 7 10Z"/><path d="M12 21V9"/><path d="M12 13c1.6 0 3-1.2 3-2.7"/></svg></span>
+            <span class="ct"><span class="cname">Kids nutrition app</span><span class="csub">Meals, targets and allergens</span></span>
+            <span class="flag soon">Coming soon</span>
+          </a>
+          <a class="applink" href="#privacy">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.3-2.9 8.2-7 9.5-4.1-1.3-7-5.2-7-9.5V6Z"/><path d="M9.3 12.2l1.9 1.9 3.6-3.8"/></svg></span>
+            <span class="ct"><span class="cname">No accounts, no cloud</span><span class="csub">Your records never leave the phone</span></span>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="apps">
+  <section class="w-white" id="apps">
     <div class="wrap">
       <div class="center">
         <span class="eyebrow">Our apps</span>
@@ -177,7 +216,7 @@
     </div>
   </section>
 
-  <section class="w-sky" id="screens">
+  <section class="w-stone" id="screens">
     <div class="wrap">
       <div class="center">
         <span class="eyebrow">A look inside</span>
@@ -196,7 +235,7 @@
     </div>
   </section>
 
-  <section id="approach">
+  <section class="w-white" id="approach">
     <div class="wrap">
       <div class="center">
         <span class="eyebrow">How we build</span>
@@ -224,7 +263,7 @@
     </div>
   </section>
 
-  <section id="privacy">
+  <section class="w-stone" id="privacy">
     <div class="wrap narrow">
       <span class="eyebrow">How we handle data</span>
       <h2>There is nothing for us to lose</h2>
@@ -241,11 +280,27 @@
         public nutrition databases.
       </p>
 
-      <div class="proof" style="margin-top:34px">
-        <div><strong>No servers</strong><span>Nothing of yours is stored off your device.</span></div>
-        <div><strong>No analytics</strong><span>We can't see how you use the apps. That's the point.</span></div>
-        <div><strong>No ads</strong><span>No advertising SDKs, no ad identifiers.</span></div>
-        <div><strong>Delete means deleted</strong><span>Uninstall, and it's gone. We hold no copy.</span></div>
+      <div class="nots">
+        <div class="not">
+          <div class="x" aria-hidden="true">✕</div>
+          <strong>No accounts on our servers</strong>
+          <p>Because we don't run any. There is nothing of yours to sign into.</p>
+        </div>
+        <div class="not">
+          <div class="x" aria-hidden="true">✕</div>
+          <strong>No analytics or trackers</strong>
+          <p>No usage telemetry, no crash SDKs, no advertising identifiers.</p>
+        </div>
+        <div class="not">
+          <div class="x" aria-hidden="true">✕</div>
+          <strong>No advertising SDKs</strong>
+          <p>No ad networks, no ad identifiers, nothing following you between apps.</p>
+        </div>
+        <div class="not">
+          <div class="x" aria-hidden="true">✕</div>
+          <strong>No invented facts</strong>
+          <p>Health and nutrition guidance is cited to its source, never generated.</p>
+        </div>
       </div>
 
       <div class="note" style="margin-top:34px">
@@ -257,7 +312,7 @@
   </section>
 
 
-  <section class="w-peach">
+  <section class="w-white">
     <div class="wrap narrow">
       <span class="eyebrow">Our story</span>
       <h2>Why we built this</h2>
