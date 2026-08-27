@@ -817,3 +817,135 @@ body.bam .hero h1, body.nn .hero h1 { font-size: clamp(38px, 4.6vw, 60px); lette
   body.bam .hero-grid, body.nn .hero-grid { grid-template-columns: 1fr; }
   body.bam .hero h1, body.nn .hero h1 { font-size: clamp(34px, 7.6vw, 46px); }
 }
+
+/* =================================================================
+   Navy + one rhythm
+   The pastel bands (mint, sky, peach, butter, blush) were still in
+   play on the product pages while the homepage had moved to a
+   white/stone rhythm — which is why the pages read as different
+   sites. Everything below collapses the site onto one system.
+   ================================================================= */
+
+:root {
+  --deep-1: #070d1a;   /* near-black navy */
+  --deep-2: #101c33;   /* mid navy */
+  --deep-3: #1c3055;   /* lifted navy */
+  --on-deep:       #f2f5f9;
+  --on-deep-soft:  #a9b6cc;
+  --on-deep-faint: #7d8ca6;
+  --amber: #e8ac6f;
+}
+
+/* --- 1. retire the pastels ------------------------------------- */
+main > section.w-mint, main > section.w-sky, main > section.w-peach,
+main > section.w-butter, main > section.w-blush,
+main > section.w-white { background: var(--card); }
+main > section.w-stone { background: var(--stone); }
+
+/* --- 2. one alternation on every page --------------------------- */
+main > section:nth-of-type(odd)  { background: var(--card); }
+main > section:nth-of-type(even) { background: var(--stone); }
+
+/* --- 3. navy anchors: the hero, and the closing call to action --- */
+main > section.hero {
+  background:
+    radial-gradient(118% 88% at 84% 16%, rgba(41,86,150,.55) 0%, rgba(41,86,150,0) 58%),
+    radial-gradient(88% 70% at 4% 90%, rgba(232,172,111,.13) 0%, rgba(232,172,111,0) 60%),
+    linear-gradient(154deg, var(--deep-1) 0%, var(--deep-2) 54%, var(--deep-3) 100%);
+}
+main > section:last-of-type {
+  background:
+    radial-gradient(100% 140% at 50% 0%, rgba(41,86,150,.42) 0%, rgba(41,86,150,0) 62%),
+    linear-gradient(168deg, var(--deep-2) 0%, var(--deep-1) 100%);
+  color: var(--on-deep);
+}
+main > section:last-of-type h2 { color: #fff; }
+main > section:last-of-type p  { color: var(--on-deep-soft); }
+main > section:last-of-type .btn-primary { background: #fff; color: var(--ink); border-color: #fff; }
+main > section:last-of-type .btn-ghost {
+  background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.35);
+}
+main > section:last-of-type .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+main > section:last-of-type .cta { background: none; border: 0; box-shadow: none; }
+
+/* --- 4. the featured app panel follows the hero into navy -------- */
+.app-card.featured {
+  background:
+    radial-gradient(110% 90% at 88% 8%, rgba(41,86,150,.5) 0%, rgba(41,86,150,0) 60%),
+    linear-gradient(156deg, #0b1526 0%, #132340 58%, #1d3358 100%);
+}
+.app-card.featured .status.live { background: rgba(146,182,235,.16); color: #a9c8f0; }
+.app-card.featured .app-links a { color: #a9c8f0; }
+.app-card.featured .tick li::before { color: #8fb4e6; }
+.applink .ci svg { color: #b8cdea; }
+.applink .flag { color: #a9c8f0; }
+.hero .badge { color: #c3d6f0; }
+.hero .badge .pulse { background: #7fa8e0; box-shadow: 0 0 0 4px rgba(127,168,224,.18); }
+
+/* the peach panel stays warm — it is the one deliberate contrast */
+.app-card.wide { background: linear-gradient(158deg, #fdf2e9 0%, #f8e3d2 100%); }
+
+/* --- 5. footer picks up the navy so the page closes cleanly ------ */
+footer.site { background: var(--deep-1); border-top: 0; color: var(--on-deep-soft); }
+footer.site .brandmark { color: #fff; }
+footer.site h4 { color: #fff; }
+footer.site a { color: var(--on-deep-soft); }
+footer.site a:hover { color: #fff; }
+footer.site p { color: var(--on-deep-faint); }
+footer.site .legal { border-top: 1px solid rgba(255,255,255,.1); }
+
+/* --- 6. the prose pages (privacy, support, terms) ---------------- */
+main.prose { background: var(--card); }
+
+/* ---------------- make the promo read as a video ----------------
+   With preload="none" the browser paints only the poster, and this
+   poster is a clean product frame — so it looked like a still and
+   people assumed the video had gone. A play badge fixes it. */
+.promo { position: relative; margin: 0; }
+.promo .frame { position: relative; display: block; border-radius: 26px; overflow: hidden; }
+.promo video { display: block; width: 100%; height: auto; border-radius: 26px; }
+.promo .play {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  pointer-events: none; transition: opacity .25s ease;
+  background: linear-gradient(180deg, rgba(7,13,26,0) 55%, rgba(7,13,26,.45) 100%);
+}
+.promo .play i {
+  width: 84px; height: 84px; border-radius: 50%;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 10px 40px rgba(7,13,26,.45);
+  display: grid; place-items: center;
+}
+.promo .play i::after {
+  content: ""; width: 0; height: 0; margin-left: 6px;
+  border-left: 24px solid #101c33;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+.promo .play em {
+  position: absolute; bottom: 22px; left: 0; right: 0; text-align: center;
+  font-style: normal; font-size: 13.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: #fff;
+  text-shadow: 0 1px 12px rgba(7,13,26,.7);
+}
+/* once it is playing the badge gets out of the way */
+.promo.playing .play { opacity: 0; }
+.promo figcaption {
+  margin-top: 14px; text-align: center;
+  font-size: 14.5px; font-weight: 600;
+}
+@media (max-width: 560px) {
+  .promo .play i { width: 64px; height: 64px; }
+  .promo .play i::after { border-left-width: 18px; border-top-width: 11px; border-bottom-width: 11px; }
+}
+
+/* the marketing slides already carry their own device frame and
+   headline, so they are presented flat rather than inside .device */
+.slide-shot {
+  display: block; margin: 44px auto 0; width: min(420px, 100%);
+  border-radius: 26px; border: 1px solid var(--rule);
+  box-shadow: var(--shadow-md); background: #f6f2e7;
+}
+
+/* keep the label clear of the browser's own control bar */
+.promo .play em { bottom: 72px; }
+@media (max-width: 560px) { .promo .play em { bottom: 58px; } }

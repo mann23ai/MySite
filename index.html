@@ -104,7 +104,7 @@
     </div>
   </section>
 
-  <section class="w-white" id="apps">
+  <section id="apps">
     <div class="wrap">
       <div class="center">
         <span class="eyebrow">Our apps</span>
@@ -168,13 +168,16 @@
           </div>
         </div>
 
-        <figure class="promo">
-          <video controls playsinline preload="none"
-                 poster="assets/babychart-promo-poster.jpg" width="640" height="1386">
-            <source src="assets/babychart-promo.mp4" type="video/mp4">
-            <a href="assets/babychart-promo.mp4">Download the BabyChart promo video</a>.
-          </video>
-          <figcaption>Thirty seconds, with sound.</figcaption>
+        <figure class="promo" id="promo">
+          <span class="frame">
+            <video controls playsinline preload="none"
+                   poster="assets/babychart-promo-poster.jpg" width="640" height="1386">
+              <source src="assets/babychart-promo.mp4" type="video/mp4">
+              <a href="assets/babychart-promo.mp4">Download the BabyChart promo video</a>.
+            </video>
+            <span class="play" aria-hidden="true"><i></i><em>Watch the tour</em></span>
+          </span>
+          <figcaption>A thirty-second tour, with sound.</figcaption>
         </figure>
       </section>
 
@@ -216,7 +219,7 @@
     </div>
   </section>
 
-  <section class="w-stone" id="screens">
+  <section id="screens">
     <div class="wrap">
       <div class="center">
         <span class="eyebrow">A look inside</span>
@@ -235,7 +238,7 @@
     </div>
   </section>
 
-  <section class="w-white" id="approach">
+  <section id="approach">
     <div class="wrap">
       <div class="center">
         <span class="eyebrow">How we build</span>
@@ -263,7 +266,7 @@
     </div>
   </section>
 
-  <section class="w-stone" id="privacy">
+  <section id="privacy">
     <div class="wrap narrow">
       <span class="eyebrow">How we handle data</span>
       <h2>There is nothing for us to lose</h2>
@@ -312,7 +315,7 @@
   </section>
 
 
-  <section class="w-white">
+  <section>
     <div class="wrap narrow">
       <span class="eyebrow">Our story</span>
       <h2>Why we built this</h2>
@@ -401,5 +404,21 @@
   </div>
 </footer>
 
+
+<script>
+(function () {
+  var fig = document.getElementById('promo');
+  if (!fig) return;
+  var v = fig.querySelector('video');
+  var badge = fig.querySelector('.play');
+  if (!v || !badge) return;
+  badge.addEventListener('click', function () { v.play(); });
+  badge.style.pointerEvents = 'auto';
+  badge.style.cursor = 'pointer';
+  v.addEventListener('play',  function () { fig.classList.add('playing'); });
+  v.addEventListener('pause', function () { fig.classList.remove('playing'); });
+  v.addEventListener('ended', function () { fig.classList.remove('playing'); });
+})();
+</script>
 </body>
 </html>
