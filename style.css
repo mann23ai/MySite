@@ -1368,3 +1368,25 @@ main > section.guide-body .sources a { color: var(--accent); }
 /* the funnel card inside a guide keeps its own dark treatment */
 main > section.guide-body .guide-cta h3 { color: #fff; }
 main > section.guide-body .guide-cta p { color: var(--on-deep-soft); }
+
+/* =================================================================
+   Signposts — the homepage points onward instead of holding it all
+   ================================================================= */
+.signposts {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px; margin-top: 48px;
+}
+.signpost {
+  display: flex; flex-direction: column; gap: 10px;
+  text-decoration: none; color: inherit;
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: 24px; padding: 30px 30px 26px;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.signpost:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--pastel); }
+.signpost h3 { margin: 0; font-size: 20px; }
+.signpost p { margin: 0; font-size: 15px; color: var(--ink-soft); max-width: none; }
+.signpost .go {
+  margin-top: auto; padding-top: 8px;
+  font-size: 14.5px; font-weight: 700; color: var(--accent);
+}
