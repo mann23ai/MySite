@@ -73,7 +73,9 @@
           <span class="eyebrow">Built by parents, for iPhone &amp; iPad</span>
           <h1>Track everything.<br>Share nothing.</h1>
           <p class="lede">
-            AxiomPoint makes easy-to-use apps that make parenting just a tad bit easier.
+            AxiomPoint builds easy-to-use apps that make everyday parenting just a
+            tad bit easier — the tracking, the timing and the details you'd rather
+            not hold in your head. BabyChart is first; meals and nutrition come next.
           </p>
           <div class="btn-row">
             <a class="btn btn-primary" href="https://apps.apple.com/us/app/babychart/id6800567624">Download BabyChart</a>
@@ -298,9 +300,16 @@
   var v = fig.querySelector('video');
   var badge = fig.querySelector('.play');
   if (!v || !badge) return;
-  badge.addEventListener('click', function () { v.play(); });
-  badge.style.pointerEvents = 'auto';
-  badge.style.cursor = 'pointer';
+  var knob = badge.querySelector('i');
+  if (knob) {
+    knob.setAttribute('role', 'button');
+    knob.setAttribute('tabindex', '0');
+    knob.setAttribute('aria-label', 'Play the BabyChart tour');
+    knob.addEventListener('click', function () { v.play(); });
+    knob.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); v.play(); }
+    });
+  }
   v.addEventListener('play',  function () { fig.classList.add('playing'); });
   v.addEventListener('pause', function () { fig.classList.remove('playing'); });
   v.addEventListener('ended', function () { fig.classList.remove('playing'); });

@@ -928,7 +928,14 @@ main.prose { background: var(--card); }
   text-shadow: 0 1px 12px rgba(7,13,26,.7);
 }
 /* once it is playing the badge gets out of the way */
-.promo.playing .play { opacity: 0; }
+.promo.playing .play { opacity: 0; pointer-events: none; }
+
+/* The overlay spans the whole video, so only the button itself may take
+   clicks — otherwise it sits on top of the native controls and the pause
+   button can never be reached. */
+.promo .play { pointer-events: none; }
+.promo .play i { pointer-events: auto; cursor: pointer; }
+.promo .play i:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
 .promo figcaption {
   margin-top: 14px; text-align: center;
   font-size: 14.5px; font-weight: 600;
